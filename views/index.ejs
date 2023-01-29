@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/site.css">
+</head>
+
+<body>
+    <header class="section-space">
+        <a href="#" class="logo">Pets</a>
+        <nav>
+            <ul>
+                <% for(let i=0; i<navItems.length; i++) {%>
+                    <li><a href="<%= navItems[i].itemLink %>"><%= navItems[i].itemName %></a></li>
+                <%} %>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero-section section-space">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-left">
+                        <h1><%= title %></h1>
+                        <p><%= description %></p>
+                    </div>
+                    <div class="hero-right">
+                        <div class="img-wrapper">
+                            <img src="<%= heroImage %>" alt="panda">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="locations section-space">
+            <div class="container">
+                <h2><%= locationHeading %></h2>
+                <ul>
+                    <li><%= locationAddressOne %></li>
+                    <li><%= locationAddressTwo %></li>
+                    <li><%= locationAddressThree %></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="location-hours section-space">
+            <div class="container">
+                <div class="location-content">
+                    <h2><%= locationHeading %></h2>
+                    <ul>
+                        <% for(let i=0; i<locationHours.length; i++) {%>
+                            <li><%= locationHours[i] %></li>
+                        <%} %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dog-of-the-week section-space">
+            <div class="container">
+                <div class="dog-content">
+                    <h2><%= dogHeading %></h2>
+                    <h3><%= dogName %></h3>
+                    <p><%= dogDescription %></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonials section-space">
+            <div class="container">
+                <div class="testimonials-content">
+                    <h2><%= testimonialsHeading %></h2>
+                    <div class="testimonials-people">
+                        <% for(let i=0; i<testiomonials.length; i++) {%>
+                        <div class="testimonial">
+                            <blockquote>
+                                <%= testiomonials[i].review %>
+                                <span>
+                                    - <%= testiomonials[i].author %>
+                                </span>
+                            </blockquote>
+                        </div>
+                        <%} %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact section-space">
+            <div class="container">
+                <div class="contact-form">
+                    <h2><%= contactHeading %>:</h2>
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email:</label>
+                            <input type="text" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message:</label>
+                            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="section-space">
+        <div class="container">
+            <p>2023 &copy;, All rights reserved</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "pet-r-us",
+  "version": "1.0.0",
+  "description": "pet-r-us ",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "dev":"nodemon index.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alet3233/pet-r-us.git"
+  },
+  "author": "Alex Thomas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alet3233/pet-r-us/issues"
+  },
+  "homepage": "https://github.com/alet3233/pet-r-us#readme"
+}
