@@ -2,33 +2,27 @@
 <html lang="en">
 
 <head>
+    <!-- meta tags for compatibility, acessibility and SEO -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- setting up the title of the page -->
     <title>
-
+        <%= title %>
     </title>
+    <!-- including oswald font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/site.css">
 </head>
 
 <body>
-    <header class="section-space">
-        <a href="#" class="logo">Pets</a>
-        <nav>
-            <ul>
-                <% for(let i=0; i<navItems.length; i++) {%>
-                    <li><a href="<%= navItems[i].itemLink %>">
-                            <%= navItems[i].itemName %>
-                        </a></li>
-                    <%} %>
-            </ul>
-        </nav>
-    </header>
-
+    <!-- rendering header partial -->
+    <%- include('_header.ejs') %>
+        
+    <!-- main content for index page and using EJS to show dynamic stuff -->
     <main>
-        <div class="hero-section section-space">
+        <div class="grooming-hero hero-section section-space">
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-left">
@@ -39,16 +33,11 @@
                             <%= description %>
                         </p>
                     </div>
-                    <div class="hero-right">
-                        <div class="img-wrapper">
-                            <img src="<%= heroImage %>" alt="panda">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="grooming-services">
+        <div class="grooming-services section-space">
             <div class="container">
                 <div class="grooming-header">
                     <h2>Our Prices</h2>
@@ -73,12 +62,8 @@
         </div>
 
     </main>
-
-    <footer class="section-space">
-        <div class="container">
-            <p>2023 &copy;, All rights reserved</p>
-        </div>
-    </footer>
+        <!-- rendering footer partial -->
+        <%- include('_footer.ejs') %>
 
 </body>
 

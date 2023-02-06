@@ -1,15 +1,34 @@
+/***************************************************************************************
+*   Title: Week 5-Node.js
+*    Author: Alex Thomas
+*    Date: 02/1/2023
+*   Source Code Attribution: EJS
+*   URL: https://ejs.co/
+*   Source Code Attribution: Partials
+*   URL: https://stackoverflow.com/questions/5404830/node-js-ejs-including-a-partial
+*   Source Code Attribution: Week 5 instructions
+*   Source Code Attribution: Pet-R-Us 5 instructions
+***************************************************************************************/
+
+// importing express and path
 const express = require("express");
 const path = require('path');
 
+// initializing the express app
 const app = express();
 
+// setting up path for EJS views
 app.set('views', path.join(__dirname, 'views'));
+// setting the views engine to ejs
 app.set('view engine','ejs');
 
+//using public folder for express other static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// setting up the port where the express app will run
 const PORT = process.env.PORT || 3000;
 
+// setting up route for index page and passing the relevant data to the index file
 app.get('/',(req,res)=>{
     res.render("index", {
         navItems: [
@@ -20,6 +39,14 @@ app.get('/',(req,res)=>{
             {
                 itemName: "Grooming",
                 itemLink: "/grooming"
+            },
+            {
+                itemName: "Boarding",
+                itemLink: "/boarding"
+            },
+            {
+                itemName: "Training",
+                itemLink: "/training"
             }
         ],
         title: 'Pets R Us',
@@ -53,6 +80,7 @@ app.get('/',(req,res)=>{
     })
 })
 
+// setting up route for grooming page and passing the relevant data to the grooming file
 app.get('/grooming',(req,res)=>{
     res.render("grooming", {
         navItems: [
@@ -63,11 +91,18 @@ app.get('/grooming',(req,res)=>{
             {
                 itemName: "Grooming",
                 itemLink: "/grooming"
+            },
+            {
+                itemName: "Boarding",
+                itemLink: "/boarding"
+            },
+            {
+                itemName: "Training",
+                itemLink: "/training"
             }
-        ], 
+        ],
         title: "Grooming",
         description: "At Pets-R-Us we take grooming seriously.  We understand that every pet is unique with unique wants and experiences.  We also pride ourselves on achieving the best outcome for every customer so both the pet and customer leave satisified and happy.  We offer an arrange of hair cutting and showering services for pets.  From basic to premiere packages each package comes with the option for specialty requests.  All of our groomers are board certified and have years of experience with grooming pets.  No matter the tpye of dog or cat we will with each customer and pet to deliver it is what you and your loved pet are looking for.  ",
-        heroImage: "images/panda.png",
         servicesList: [
             {
                 packageName: "Basic",
@@ -88,6 +123,84 @@ app.get('/grooming',(req,res)=>{
            
     })
 })
+
+// setting up route for training page and passing the relevant data to the training file
+app.get('/training',(req,res)=>{
+    res.render("training", {
+        navItems: [
+            {
+                itemName: "Home",
+                itemLink: "/"
+            },
+            {
+                itemName: "Grooming",
+                itemLink: "/grooming"
+            },
+            {
+                itemName: "Boarding",
+                itemLink: "/boarding"
+            },
+            {
+                itemName: "Training",
+                itemLink: "/training"
+            }
+        ], 
+        title: "Training",
+        description: "At Pets-R-Us we take pride in seeing pets learn new tricks and become the type of pet their owner wants them to be.  Whether you want your pet to learn to fetch, roll over, or become potty trained we have trainers with multiple decades of experience that can teach your loved one to reach the potential it can.  Our trainers have worked with all sort of dog and cat breeds and have over 20 plus years of collective experience.  We also specialize in teaching dogs tricks that would qualify them for shows.  We take an individualize approached to our training based on age, breed, temperament, personality and other aspects to come up with a plan of action for your pet to reach its full potential.  We understand each pet is a loved one and we take pride in our care of your pet in helping it grow into the type of pet the owner envisions.   ",
+        heroImage: "images/panda.png",
+        trainerName: "Chris",
+        trainerDescription: "Chris is board national board certified with over a decade of experience",
+        dogTrainingImage: "images/panda.png",
+        servicesList: [
+            {
+                packageName: "Basic Tier",
+                servicesName: [ "Basic Training 25$ per classx"]
+            },
+            {
+                packageName: "Standard Tier",
+                servicesName: [ "Standard training 35$ per class"]
+            },
+            {
+                packageName: "Premium Tier",
+                servicesName: [ "Premium Training 50$ per class"]
+            }
+        ]
+           
+    })
+})
+
+// setting up route for boarding page and passing the relevant data to the boarding file
+app.get('/boarding',(req,res)=>{
+    res.render("boarding", {
+        navItems: [
+            {
+                itemName: "Home",
+                itemLink: "/"
+            },
+            {
+                itemName: "Grooming",
+                itemLink: "/grooming"
+            },
+            {
+                itemName: "Boarding",
+                itemLink: "/boarding"
+            },
+            {
+                itemName: "Training",
+                itemLink: "/training"
+            }
+        ],
+        title: 'Pets R Us',
+        description: "At Pets-R-Us we take serious care of every pet that boards with us.  When you go on vacation or need to leave your pet for a period of time you don’t want any stress or concern about your pet.  With our boarding services each pet will receive individualized care based on their needs.  Each pet will have daily activities to keep them active and exercising.  Each will receive any individualized care they need whether it be medicine they need to take or special diets they need to maintain while you are away.  All of our boarding and activity rooms have 24/7 cameras so every customer can check up on their loved one at any time of day.  The pets in our care will receive 24/7 supervison as we have employees working at all hours of the morning, day, and night.  We take pride in having each pet being looked after and having all their needs met and that what your pet will get when boarding with Pets-R-Us.  ",
+        heroImage: "images/panda.png",
+        boardingItems: ["1 dog up to 2 nights: $40/night","2 dog up to 2 nights: $30/night", "3 dog up to 2 nights: $20/night", "4 dog up to 2 nights: $10/night"],
+        boardingHeading: "Our Boarding",
+        boardingDescription: "Our boarding offers a safe and secure environment for dogs while their owners are away."
+    })
+})
+
+
+// running the app on the port which we set up earlier.
 app.listen(PORT, () => {
     console.log('Application started and listening on PORT ' + PORT);
 });

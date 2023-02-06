@@ -1,7 +1,18 @@
+/***************************************************************************************
+*    Title: Week 5-Node.js
+*    Author: Alex Thomas
+*    Date: 02/1/2023
+*    File: site.css
+*    Description: Pet-R-Us style sheet
+*    Source Code Attribution: Pet-R-Us instructions
+***************************************************************************************/
+
 * {
     margin: 0;
     padding: 0;
 }
+
+/* setting up root variables to be used later */
 
 :root {
     --primary-color: #000;
@@ -25,6 +36,8 @@ body {
 img {
     width: 100%;
 }
+
+/* setting up box on the screen */
 
 .container {
     max-width: 80%;
@@ -113,6 +126,10 @@ header {
     justify-content: space-between;
 }
 
+.grooming-hero.hero-section .hero-content, .training-hero.hero-section .hero-content, .boarding-hero.hero-section .hero-content{
+    justify-content: center;
+}
+
 .hero-left {
     width: 60%;
 }
@@ -140,29 +157,77 @@ blockquote {
     text-align: center;
 }
 
-.grooming-content {
+.grooming-content, .training-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.grooming-card {
+.grooming-card, .training-card {
     border: 1px solid #000;
     margin-bottom: 20px;
     padding: 20px;
     box-shadow: 2px 2px #888888;
+    margin-right: 10px;
 }
 
-.grooming-card h3, .grooming-card strong {
+.grooming-card h3, .grooming-card strong, .training-card h3, .training-card strong {
     margin-bottom: 10px;
     display: block;
 }
 
-.grooming-card ul {
+.grooming-card ul, .training-card ul {
     list-style: circle;
     margin-left: 20px;
 }
 
+.boarding {
+    text-align: center;
+
+}
+.borading-header, .dog-trainer-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.boarding .card {
+    border: 1px solid #000;
+    padding: 30px;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.boarding .card h3:last-child {
+    margin-bottom: 0;
+}
+
+.center {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.training-header h2 {
+    margin-bottom: 20px;
+}
+
 footer {
     text-align: center;
+}
+
+/* adding media query for tablet screen sizes for responsiveness */
+
+@media screen and (max-width: 768px) {
+    .hero-content {
+        justify-content: center;
+    }
+    
+    .grooming-content, .training-content{
+        justify-content: center;
+    }
+
+    .grooming-content .grooming-card, .training-card .training-card {
+        margin-right: 20px;
+    }
 }

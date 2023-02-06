@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- meta tags for compatibility, acessibility and SEO -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- setting up the title of the page -->
+    <title>
+        <%= title %>
+    </title>
+    <!-- including oswald font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/site.css">
+</head>
+
+<body>
+    <div class="boarding-wrapper">
+        <!-- rendering header partial -->
+        <%- include('_header.ejs') %>
+
+        <!-- main content for training page and using EJS to show dynamic stuff -->
+            <main>
+                <div class="training-hero hero-section section-space">
+                    <div class="container">
+                        <div class="hero-content">
+                            <div class="hero-left">
+                                <h1>
+                                    <%= title %>
+                                </h1>
+                                <p>
+                                    <%= description %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dog-trainer-wrapper section-space">
+                    <div class="container">
+                        <div class="dog-trainer-wrapper">
+                            <div class="dog-trainer-header">
+                                <h2><%= trainerName %></h2>
+                                <p><%= trainerDescription %></p>
+                            </div>
+                            <div class="dog-img-wrapper">
+                                <img src="<%= dogTrainingImage %>" alt="dog trainer image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="training-services section-space">
+                    <div class="container">
+                        <div class="training-header">
+                            <h2 class="center">Our Prices</h2>
+                        </div>
+                        <div class="training-content">
+                            <% for(let i=0; i<servicesList.length; i++) {%>
+                                <div class="training-card">
+                                    <div class="training-card-header">
+                                        <h3>
+                                            <%= servicesList[i].packageName %>
+                                        </h3>
+                                    </div>
+                                    <div class="training-card-content">
+                                        <ul>
+                                            <% for(let j=0; j<servicesList[i].servicesName.length; j++) {%>
+                                                <li>
+                                                    <%= servicesList[i].servicesName[j] %>
+                                                </li>
+                                                <%} %>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <%} %>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+            <!-- rendering footer partial -->
+            <%- include('_footer.ejs') %>
+    </div>
+
+</body>
+
+</html>
