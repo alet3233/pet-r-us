@@ -143,7 +143,7 @@ input, textarea{
     padding: 6px;
 }
 
-button {
+button, form .btn.btn-primary {
     background-color: var(--button-color);
     color: var(--background-color);
     padding: 6px;
@@ -210,6 +210,10 @@ blockquote {
 
 .training-header h2 {
     margin-bottom: 20px;
+}
+
+.form-field {
+    text-align: center;
 }
 
 footer {

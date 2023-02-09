@@ -1,0 +1,12 @@
+<!-- Header partial -->
+
+<header class="section-space">
+    <a href="/" class="logo">Pets</a>
+    <nav>
+        <ul>
+            <% for(let i=0; i<navItems.length; i++) {%>
+                <li><a href="<%= navItems[i].itemLink %>"><%= navItems[i].itemName %></a></li>
+            <%} %>
+        </ul>
+    </nav>
+</header>
