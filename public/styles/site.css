@@ -216,6 +216,24 @@ blockquote {
     text-align: center;
 }
 
+.customers-content.center {
+    width: fit-content;
+}
+
+table {
+    border-spacing: 0;
+}
+
+thead tr, tr:nth-child(even) {
+    background-color: var(--background-color);
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 5px;
+    margin: 0;
+}
+
 footer {
     text-align: center;
 }
