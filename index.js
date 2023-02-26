@@ -15,6 +15,8 @@ const express = require("express");
 const mongoose = require("mongoose")
 const path = require('path');
 const Customer = require('./models/customer');
+const Appointment = require('./models/appointment');
+const fs = require('fs');
 
 // initializing the express app
 const app = express();
@@ -64,6 +66,10 @@ let navItems = [
     {
         itemName: "Customers",
         itemLink: "/customers"
+    },
+    {
+        itemName: "Booking",
+        itemLink: "/booking"
     }
 ]
 let homeData = {
@@ -218,6 +224,41 @@ app.post('/register', (req, res, next) => {
         }
     })
 })
+
+app.get('/booking', (req, res) => {
+    let jsonFile = fs.readFileSync('./public/data/services.json');
+    let services = JSON.parse(jsonFile);
+
+    console.log(services);
+
+    res.render('booking', {
+        navItems,
+        title: 'Pets R Us',
+        description: "At Pets-R-Us we take serious care of every pet that boards with us.  When you go on vacation or need to leave your pet for a period of time you don’t want any stress or concern about your pet.  With our boarding services each pet will receive individualized care based on their needs.  Each pet will have daily activities to keep them active and exercising.  Each will receive any individualized care they need whether it be medicine they need to take or special diets they need to maintain while you are away.  All of our boarding and activity rooms have 24/7 cameras so every customer can check up on their loved one at any time of day.  The pets in our care will receive 24/7 supervison as we have employees working at all hours of the morning, day, and night.  We take pride in having each pet being looked after and having all their needs met and that what your pet will get when boarding with Pets-R-Us.  ",
+        services: services
+    })
+})
+
+app.post('/booking', (req, res, next) => {
+    console.log(req.body)
+    const newAppointment = new Appointment({
+        username: req.body.username,
+        email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        service: req.body.service,
+    })
+
+    Appointment.create(newAppointment, function(err, appointment) {
+        if (err) {
+            console.log(err);
+            next(err);
+        } else {
+            res.render('index', homeData)
+        }
+    })
+})
+
 
 // running the app on the port which we set up earlier.
 app.listen(PORT, () => {

@@ -134,9 +134,13 @@ header {
     width: 60%;
 }
 
+.form-field {
+    margin-bottom: 10px;
+}
+
 label, input, textarea {
     display: block;
-    margin: 0 auto 10px;
+    margin: 0 auto;
 }
 
 input, textarea{
@@ -149,6 +153,7 @@ button, form .btn.btn-primary {
     padding: 6px;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 blockquote {
@@ -232,6 +237,11 @@ th, td {
     border: 1px solid #000;
     padding: 5px;
     margin: 0;
+}
+
+/* booking */
+.booking-service h1 {
+    margin-bottom: 40px;
 }
 
 footer {
