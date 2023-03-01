@@ -70,6 +70,10 @@ let navItems = [
     {
         itemName: "Booking",
         itemLink: "/booking"
+    },
+    {
+        itemName: "My appointments",
+        itemLink: "/my-appointments"
     }
 ]
 let homeData = {
@@ -255,6 +259,25 @@ app.post('/booking', (req, res, next) => {
             next(err);
         } else {
             res.render('index', homeData)
+        }
+    })
+})
+
+app.get('/my-appointments', (req, res) => {
+    res.render('my-appointments', {
+        navItems,
+        title: 'Pets R Us',
+        description: "At Pets-R-Us we take serious care of every pet that boards with us.  When you go on vacation or need to leave your pet for a period of time you don’t want any stress or concern about your pet.  With our boarding services each pet will receive individualized care based on their needs.  Each pet will have daily activities to keep them active and exercising.  Each will receive any individualized care they need whether it be medicine they need to take or special diets they need to maintain while you are away.  All of our boarding and activity rooms have 24/7 cameras so every customer can check up on their loved one at any time of day.  The pets in our care will receive 24/7 supervison as we have employees working at all hours of the morning, day, and night.  We take pride in having each pet being looked after and having all their needs met and that what your pet will get when boarding with Pets-R-Us.  ",
+    })
+})
+
+app.get('/api/appointments/:email', async(req, res, next) => {
+    Appointment.find({'email': req.params.email}, function(err, email) {
+        if (err) {
+            console.log(err);
+            next(err);
+        } else {
+            res.json(email);
         }
     })
 })

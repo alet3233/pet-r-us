@@ -147,7 +147,7 @@ input, textarea{
     padding: 6px;
 }
 
-button, form .btn.btn-primary {
+button, .btn.btn-primary {
     background-color: var(--button-color);
     color: var(--background-color);
     padding: 6px;
@@ -243,6 +243,7 @@ th, td {
 .booking-service h1 {
     margin-bottom: 40px;
 }
+
 
 footer {
     text-align: center;
